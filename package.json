@@ -1,20 +1,21 @@
 {
-  "name": "Expressive",
-  "description": "An attempt to make a configuration based cms build on Expressjs to boil with any DBMS System in MVC style. Still need to make templating system structure and in a very basic stage but i am improving it in my spare time.",
-  "version": "0.0.1",
-  "private": true,
-  "scripts": {
-    "start": "nodemon app.js"
-  },
-  "dependencies": {
-    "express": "3.3.5",
-    "socket.io":"*",
-    "jade": "*",
-    "mysql":"latest",
-    "orm":"latest",
-    "lodash": "*"
-  },
-  "devDependencies":{
-    "nodemon": "*"
-  }
+    "name"           : "Expressive",
+    "description"    : "An attempt to make a configuration based cms build on Expressjs to boil with any DBMS System in MVC style. Still need to make templating system structure and in a very basic stage but i am improving it in my spare time.",
+    "version"        : "0.0.1",
+    "private"        : true,
+    "scripts"        : {
+        "start": "nodemon app.js"
+    },
+    "dependencies"   : {
+        "express"           : "3.x.x",
+        "socket.io"         : "*",
+        "jade"              : "*",
+        "mysql"             : "latest",
+        "orm"               : "latest",
+        "lodash"            : "*",
+        "connect-multiparty": "*"
+    },
+    "devDependencies": {
+        "nodemon": "*"
+    }
 }

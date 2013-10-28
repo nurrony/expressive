@@ -1,18 +1,24 @@
 var dbSchema = {
-    products : {
-        product_title  : String,
-        product_image  : String,
-        product_price  : Number
+    products  : {
+        product_title: String,
+        product_image: String,
+        product_price: Number,
+        settings     : {
+            cache: false
+        }
     },
-    categories : {
-    	name      : String,
-        surname   : String
+    categories: {
+        name   : String,
+        surname: String
     },
-    users : {
+    users     : {
         firstname: String,
         lastname : String,
-        email : String,
-        join: Date
+        email   : String,
+        join    : Date,
+        settings: {
+            cache: false
+        }
     }
 }
 module.exports = dbSchema;
