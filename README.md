@@ -32,7 +32,7 @@ components
   |      |-> index.js --> frontend routing defines here. work as controller
   |
   |--admin
-        |
+      |-products
         |--> models - admin products models goes here (dir)
         |--> views - admin products partial viewes here (dir)
         |-> index.js --> admin routing defines here. work as controller
