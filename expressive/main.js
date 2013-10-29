@@ -1,6 +1,6 @@
 /**
  *
- * I dont believe on licensing. but if it helps anyone then i will be the happiest man in the world
+ * I don't believe on licensing. but if it helps anyone then i will be the happiest man in the world
  *
  **/
 
@@ -22,7 +22,7 @@ var BuildExpressive = function () {
         _expressiveDefault = null;
     var
         _getDomainName = function ( ip ) {
-            var ip = ip || '127.0.0.1';
+            ip = ip || '127.0.0.1';
             dns.resolve( ip, function ( err, domain ) {
                 if ( err ) throw new Error( "An error has occured during reversing domanin name: " + err.message );
                 console.log( domain );
@@ -73,8 +73,8 @@ var BuildExpressive = function () {
             var value = '';
 
             var check = ( typeof key !== 'undefined' && key !== '' &&
-                typeof (value = _app.get( key )) !== 'undefined'
-                ) ? value : null;
+                          typeof (value = _app.get( key )) !== 'undefined'
+                        ) ? value : null;
 
             if ( check ) return check; else throw new Error( "Expressive Error: You must provide a valid key" );
         },
@@ -105,22 +105,35 @@ var BuildExpressive = function () {
             } ) );
         },
 
-        _initComponents = function ( app ) {
+        _initFrontendComponents = function ( app ) {
 
             var baseDir = process.cwd();
 
             _.each( _config.components, function ( component ) {
-                require( baseDir + '/components/' + component )( app );
-            } )
+                require( baseDir + '/components/' + component + '/frontend/' )( app );
+            } );
 
-        }
-    _init = function ( app, env, config ) {
-        _initConfig( app, env );
-        _setExpressiveGlobals( app, config );
-        //_getDomainName(_config.ip);
-        _prepareDb( app );
-        _initComponents( app );
-    },
+        },
+
+        _initAdminComponents = function ( app ) {
+
+            var baseDir = process.cwd();
+
+            _.each( _config.components, function ( component ) {
+                require( baseDir + '/components/' + component + '/admin/' )( app );
+            } );
+
+        },
+
+        _init = function ( app, env, config ) {
+            _initConfig( app, env );
+            _setExpressiveGlobals( app, config );
+            //_getDomainName(_config.ip);
+            _prepareDb( app );
+
+            _initAdminComponents( app );
+            _initFrontendComponents( app );
+        },
 
         _getUrl = function ( path ) {
             path = (path) ? '/' + path : '';
@@ -128,14 +141,13 @@ var BuildExpressive = function () {
         }
 
     return {
-        init         : _init,
-        initComponent: _initComponents,
+        init     : _init,
         /* setGlobal : _setGlobal,*/
-        getGlobal    : _getGlobal,
-        getUrl       : _getUrl
+        getGlobal: _getGlobal,
+        getUrl   : _getUrl
     }
 
-}
+};
 
 
 module.exports = function () {

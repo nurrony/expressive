@@ -24,11 +24,19 @@ each Component directory contains 2 subdirectories  and a index.js.  the hierarc
 ```
 components
   |
-  |- products
-     | 
-     |--> models - products models goes here (dir)
-     |--> views - products partial viewes here (dir)
-     |-> index.js --> routing defines here. work as controller
+  |--frontend
+  |   |- products
+  |      |
+  |      |--> models - frontend products models goes here (dir)
+  |      |--> views - frontend products partial viewes here (dir)
+  |      |-> index.js --> frontend routing defines here. work as controller
+  |
+  |--admin
+        |
+        |--> models - admin products models goes here (dir)
+        |--> views - admin products partial viewes here (dir)
+        |-> index.js --> admin routing defines here. work as controller
+
   ...
 ```
 #How to set Global Variables#

@@ -5,7 +5,7 @@ var multipartMiddleware = expressive.getGlobal( 'multipartMiddleware' );
 var ProductsController = function () {
     return {
         index: function ( req, res, next ) {
-            console.log( "hello world" );
+            res.json( "hello frontend" );
         },
         list : function ( req, res, next ) {
             productmodel.getProducts( req.models, function ( err, allProducts ) {
@@ -24,24 +24,15 @@ var ProductsController = function () {
                 res.json( product );
                 product = obj = null;
             } );
-        },
-
-        create: function ( req, res, next ) {
-            console.log( req.files );
-            productmodel.createProduct( req.models, req.body, function ( err, result ) {
-                res.json( result );
-            } );
         }
 
-    }
-}
+    };
+};
 
 module.exports = function ( app ) {
-
+    console.log("In Frontend Product Ctrl:");
     var ProductsCtrl = new ProductsController();
-    console.log( "In product Ctrl:" )
-    app.get( '/products', ProductsCtrl.list );
+    app.get( '/products', ProductsCtrl.index );
     app.get( '/products/:id', ProductsCtrl.details );
-    app.post( '/products/create', multipartMiddleware, ProductsCtrl.create );
 
-}
+};
