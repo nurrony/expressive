@@ -8,6 +8,7 @@ var ProductModel = function () {
         _listProducts = function ( models, callback ) {
             models.products.find( function ( err, products ) {
                 if ( err ) callback( err, null );
+                console.log(products);
                 callback( null, products )
             } );
 
@@ -29,13 +30,23 @@ var ProductModel = function () {
                 callback( null, success );
                 return;
             } );
-        }
+        },
+    _delete = function ( models, id, callback ) {
+        models.products.find({ id: id }).remove(function (err) {
+            if(err){
+                callback(err,null); return;
+            }
+            callback(null,{success:1, message: "Product deleted successfully with ID#"+ id});
+            return;
+        });
+    };
 
 
     return {
         getProducts      : _listProducts,
         getProductDetails: _productDetails,
-        createProduct    : _create
+        createProduct    : _create,
+        deleteProduct : _delete
     }
 
 }();

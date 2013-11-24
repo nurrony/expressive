@@ -12,15 +12,7 @@ var app = module.exports = express()
     , cms = expressive();
 // all environments
 app.configure( function () {
-    cms.init( app, 'local', {sio: io, "my greeting": " Hello Expressive"} );
-    app.use( express.favicon() );
-    app.use( express.logger( 'dev' ) );
-    // as Connect-3 is going to remove multipart middleware so we aren't going to use bodyParser.
-    //app.use(express.bodyParser());
-    app.use( express.methodOverride() );
-    app.use( express.cookieParser( 'expressive cms' ) );
-    app.use( express.session() );
-    app.use( app.router );
+    cms.init( app,express, 'local', {sio: io, "my greeting": " Hello Expressive"} );
     app.use( express.static( path.join( __dirname, 'public' ) ) );
     app.use( function ( req, res, next ) {
         throw new Error( req.url + ' not found' );
@@ -43,5 +35,5 @@ app.configure( 'development', function () {
 
 server.listen( app.get( 'port' ), app.get( "ip" ), function () {
     console.log( 'Expressive cms is running and server listening on port http://' + app.get( "ip" ) + ':' + app.get( 'port' ) + '/ ' );
-    delete io;
+    io = null;
 } );

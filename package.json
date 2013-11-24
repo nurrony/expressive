@@ -12,8 +12,10 @@
         "jade"              : "*",
         "mysql"             : "latest",
         "orm"               : "latest",
+        "orm-paging"        : "*",
         "lodash"            : "*",
-        "connect-multiparty": "*"
+        "connect-multiparty": "*",
+        "everyauth"         : "*"
     },
     "devDependencies": {
         "nodemon": "*"

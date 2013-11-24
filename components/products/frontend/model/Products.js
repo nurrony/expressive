@@ -3,15 +3,30 @@ var ProductModel = function () {
 
     var
         _listProducts = function ( models, callback ) {
-            models.products.find( function ( err, products ) {
-                if ( err ) callback( err, null );
+            models.posts.find( function ( err, products ) {
+                if ( err ) {
+                    callback( err, null );
+                }
                 callback( null, products )
             } );
 
         },
+
+        _getByUser = function ( models, uid, callback ) {
+            console.log( uid );
+            models.posts.findByUsers( {"users_id": uid} ).find( function ( err, post ) {
+                if ( err ) {
+                    callback( err, null )
+                }
+                callback( null, post );
+            } );
+        },
+
         _productDetails = function ( models, obj, callback ) {
-            models.products.find( obj, function ( err, products ) {
-                if ( err ) callback( err, null );
+            models.posts.find( obj, function ( err, products ) {
+                if ( err ) {
+                    callback( err, null );
+                }
                 callback( null, products );
             } );
         };
@@ -19,7 +34,8 @@ var ProductModel = function () {
 
     return {
         getProducts      : _listProducts,
-        getProductDetails: _productDetails
+        getProductDetails: _productDetails,
+        getByUser        : _getByUser
     }
 
 }();

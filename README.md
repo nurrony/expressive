@@ -14,8 +14,12 @@ There are some configuration files that you need to edit before installing it
 
 * your server configuration settings in `config/index.js`
 * your database system configuration setting in `config/database.js`
-* your database schema definition in `config/dbSchema.js`
-the key name  self explain their purpose. 
+the key name  self explain their purpose.
+
+#Database Schema Definition#
+ your database schema definition should store in `config/dbSchema/<your-chosen-dbms>` directory where each
+ table definition, relations and individual options are defined in each file. where filename is the name of
+ db table created in Database
 
 #Components#
 This directory contains components defined in `config/index.js` components key. Each subdirectory here match the name from  `components` keys element.
@@ -47,7 +51,7 @@ cms.init(app,environment,{"my greeting": " Hello world"});
 
 ```
 
-to retrive 'my greeting' to anywhere of your component
+to retrive 'my greeting' from anywhere of your component
 
 ```
 expressive.getGlobal('my greeting');
