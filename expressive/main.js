@@ -83,10 +83,7 @@ var BuildExpressive = function () {
         },
 
         _prepareDb = function ( app ) {
-
-            var dbport = _dbConfig.port !== '' ? (':' + _dbConfig.port) : ''
-                , _dbDSN = _config.db + '://' + _dbConfig.username + ':' + _dbConfig.password + '@' + _dbConfig.host + dbport + '/' + _dbConfig.dbname;
-            DB.setup( _dbDSN, app, _config.db );
+            DB.setup( _dbConfig, app);
         },
 
         _initFrontendComponents = function ( app ) {

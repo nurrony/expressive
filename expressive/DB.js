@@ -1,7 +1,9 @@
 /**
  * Created by nmrony on 11/24/13.
+ * need to test for mongodb instance
  */
 var filesystem = require( 'fs' ),
+    _ = require("lodash" ),
     models = {},
     relationships = {};
 
@@ -9,14 +11,20 @@ var singleton = function singleton() {
     var orm = require( "orm" ),
         paging = require( "orm-paging" ),
         modelsPath = "";
-    this.setup = function ( DSN, app, dbType ) {
-        app.use( orm.express( DSN, {
-            define: function ( db, models, next ) {
-                db.use(paging);
-                init( dbType, db, models );
-                next();
-            }
-        } ) );
+    this.setup = function ( databases , app) {
+        _.each(databases, function(dbInfo, protocol){
+            var dbport = dbInfo.port !== '' ? (':' + dbInfo.port) : ''
+                , _dbDSN = protocol + '://' + dbInfo.username + ':' + dbInfo.password + '@' + dbInfo.host + dbport + '/' + dbInfo.dbname;
+
+            app.use( orm.express( _dbDSN, {
+                define: function ( db, models, next ) {
+                    db.use(paging);
+                    init( protocol, db, models );
+                    next();
+                }
+            } ) );
+        });
+
     }
 
     this.model = function ( name ) {

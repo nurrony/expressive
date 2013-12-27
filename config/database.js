@@ -1,8 +1,9 @@
+var _ = require('lodash');
 var dbConfig = {
-    mongo: {
+    mongodb: {
         host    : '127.0.0.1',
-        username: '',
-        password: '',
+        username: 'nmrony',
+        password: 'rootuser',
         port    : 27017,
         sync    : true,
         dbname  : 'project_expressive'
@@ -18,5 +19,17 @@ var dbConfig = {
 };
 
 module.exports = function ( dbsystem ) {
-    return dbConfig[ dbsystem || process.argv[2] || 'mysql' ];
+
+    if( _.isArray(dbsystem) || _.isPlainObject(dbsystem)){
+        var dbSystems = {};
+        _.each(dbsystem ,function(dbms){
+           dbSystems[ dbms ] = dbConfig[ dbms ];
+        });
+        return dbSystems;
+    }else{
+        return {
+            mysql : dbConfig.mysql
+        };
+    }
+    //return dbConfig[ dbsystem || process.argv[2] || ['mysql'] ];
 };
