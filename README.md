@@ -1,5 +1,8 @@
 #Expressive#
-An attempt to make a configuration based cms build on [expressjs](http://www.expressjs.com) to boil with any DBMS System in MVC style. Still need to make templating system structure and in a very basic stage 
+
+> ###This repository is no longer maintained. It is obsolete
+
+An attempt to make a configuration based cms build on [expressjs](http://www.expressjs.com) to boil with any DBMS System in MVC style. Still need to make templating system structure and in a very basic stage
 but i am improving it in my spare time.
 
 #Dependecies#
@@ -59,7 +62,7 @@ expressive.getGlobal('my greeting');
 ```
 #How to install#
 Define your dependencies in `package.json` and configure your environment in `app.json`. Make sure you have db configured and db exist fine.
-Then run the following command from your project/app directory 
+Then run the following command from your project/app directory
 
 ```
 npm install
