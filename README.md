@@ -1,4 +1,4 @@
-#Expressive# [![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+#Expressive [![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
 
 > ###This repository is no longer maintained. It is obsolete
 
